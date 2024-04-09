@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../styles.css" />
+    <title>JavaScript Background Color Switcher</title>
+    <link href="style.css">
+    <style>
+        body
+        {
+            background-color: rgb(240, 15, 180);
+        }
+        html {
+    margin: 0;
+  }
+  
+  span {
+    display: block;
+    
+  }
+  .canvas {
+    margin: 100px auto 100px;
+    width: 50%;
+    text-align: center;
+    background-color: blue;
+    border:1px solid black;
+    border-radius: 15px;
+  }
+  
+  .button {
+    width: 100px;
+    height: 100px;
+    border: solid black 2px;
+    display: inline-block;
+  }
+  
+  #grey {
+    background: rgb(240, 15, 15);
+  }
+  
+  #white {
+    background: rgb(247, 244, 35);
+  }
+  #blue {
+    background: rgb(224, 3, 73);
+  }
+  #yellow {
+    background: rgb(78, 78, 5);
+  }
+  #Orange{
+    background-color: orange;
+  }
+
+    </style>
+  </head>
+  <body>
+    <nav>
+      <a href="/" aria-current="page">Home</a>
+    </nav>
+    <div class="canvas">
+      <!-- <a
+        style="
+          background-color: #fff;
+          padding: 10px 30px;
+          border-radius: 8px;
+          color: #212121;
+          text-decoration: none;
+          border: 2px solid #212121;
+        "
+        href="../index.html"
+        >Back to Home Page</a
+      > -->
+      <h1>Color Scheme Switcher</h1>
+      <span class="button" id="grey">01</span>
+      <span class="button" id="white">02</span>
+      <span class="button" id="blue"></span>
+      <span class="button" id="yellow"></span>
+      <span class="button" id="Orange">05</span>
+      <span class="button" id="random"></span>
+      <h2>
+        Try clicking on one of the colors above
+        <span>to change the background color of this page!</span>
+      </h2>
+    </div>
+    <script>
+        const buttons = document.querySelectorAll(".button");
+
+function log(e, button) {
+  if (e.target.id === button.id) {
+    document.querySelector("body").style.backgroundColor = button.id;
+  }
+}
+buttons.forEach((button) => {
+  button.addEventListener("click", (e) => log(e, button));
+});
+document.getElementById("grey").addEventListener("Click", function() {
+  
+});
+document.getElementById("grey").addEventListener("click", function() {
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  document.querySelector("body").style.backgroundColor = getRandomColor();
+});
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   // Generate a random color
+//   var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+  
+//   // Apply the random color to the background of the body
+//   document.body.style.backgroundColor = randomColor;
+// });
+
+// function changeBackgroundColor() {
+//   // Generate a random color
+//   var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+  
+//   // Apply the random color to the background of the body
+//   document.body.style.backgroundColor = randomColor;
+// }
+
+// // Call the function initially
+// changeBackgroundColor();
+
+function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+        let color = '#';
+        for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+}
+
+ const random = document.querySelector("#random");
+random.addEventListener('click', ()=>{
+  let color = getRandomColor();
+  document.querySelector("body").style.backgroundColor = color;
+})
+
+
+function automaticFunction() {
+  let color = getRandomColor();
+  document.querySelector("body").style.backgroundColor = color;
+}
+setInterval(automaticFunction, 1000);
+clearIntervalId = setInterval(() =>
+{
+  document.querySelector("body").style.backgroundColor = getRandomColor();
+},1000
+);
+
+buttons[5].addEventListener("click",() => clearInterval(interValId));
+
+    </script>
+    <script src="index.js"></script>
+   
+ </body>
+</html>
